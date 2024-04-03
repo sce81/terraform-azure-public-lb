@@ -3,7 +3,7 @@ resource "azurerm_public_ip" "main" {
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
   allocation_method   = "Static"
-  domain_name_label   = "sce-${data.azurerm_resource_group.main.name}"
+  domain_name_label   = "${data.azurerm_resource_group.main.name}-${random_string.random.result}"
 
   tags = merge(
     local.common_tags, var.extra_tags,
@@ -43,6 +43,12 @@ resource "azurerm_lb_rule" "example" {
 resource "azurerm_lb_backend_address_pool" "main" {
   loadbalancer_id = azurerm_lb.main.id
   name            = "${var.name}-backend-address"
+}
+
+resource "random_string" "random" {
+  length           = 6
+  special          = false
+  min_lower        = 6
 }
 
 

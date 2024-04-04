@@ -14,6 +14,6 @@ output "public_ip" {
 }
 
 output "public_fqdn" {
-  value = azurerm_public_ip.main.reverse_fqdn
+  value = azurerm_public_ip.main.fqdn
 }
 

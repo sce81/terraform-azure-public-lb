@@ -18,8 +18,8 @@ resource "azurerm_lb" "main" {
   sku_tier            = var.lb_sku_tier
 
   frontend_ip_configuration {
-    name  = "${var.name}-public-ip"
-    zones = var.lb_zones
+    name                 = "${var.name}-public-ip"
+    zones                = var.lb_zones
     public_ip_address_id = azurerm_public_ip.main.id
   }
   tags = merge(

@@ -46,9 +46,9 @@ resource "azurerm_lb_backend_address_pool" "main" {
 }
 
 resource "random_string" "random" {
-  length           = 6
-  special          = false
-  min_lower        = 6
+  length    = 6
+  special   = false
+  min_lower = 6
 }
 
 
